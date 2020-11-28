@@ -1,11 +1,18 @@
 html
   head
+    link(href='/css/normalize.css', rel='stylesheet')
     link(href='/css/style.css', rel='stylesheet')
     title= title
   body
-    h1= message
-    img(src='/images/tenor.gif')
+    div.wrapper
+      h1.m-0.color-betelnut.text-6xl.text-stroke-red.text-center= message
+      p= description
+      h2.text-center= '輸入...完整...文字...'
+      form(action='/' method="post")
+        div
+          textarea(name='textInput' class="center w-3/6 h-60")= originText
+          button(type='submit' class="center")= '轉換...文字...'
+      if generatedText
+        p.bg-betelnut= generatedText
 
 script.
-  var a = 1;
-  console.log(a)

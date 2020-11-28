@@ -12,7 +12,7 @@ nodejieba['DEFAULT_STOP_WORD_DICT'] =  './dict/stop_words.utf8'
 const punctuationMarksRegex = require('./public/js/punctuationMarks')
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'pug')
 app.set('views', './views')
@@ -20,8 +20,15 @@ app.set('views', './views')
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
+  res.render('index', { ...info, originText: '' });
 });
+app.post('/', function(req, res) {
+  const { textInput } = req.body
+  const filteredTextInput = textInput.replace(punctuationMarksRegex, '')
+  const cutList = nodejieba.cut(filteredTextInput.trim())
+  const generatedText = cutList.join('...') + '...'
+  res.render('index', { ...info, generatedText, originText: textInput });
+})
 
 app.listen(port, () => {
   console.log(`Express app listening on port ${port}.`)
