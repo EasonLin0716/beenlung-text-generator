@@ -1,0 +1,49 @@
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "新細明體";
+}
+
+html,
+body {
+  @apply m-0 p-0;
+}
+
+.bg-betelnut {
+  background-color: #ff7676;
+}
+
+.text-stroke-red {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #cf0101;
+}
+
+.color-betelnut {
+  color: #4f8120;
+}
+
+.wrapper {
+  @apply px-16 py-8 min-h-screen relative;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("/images/betelnutbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
