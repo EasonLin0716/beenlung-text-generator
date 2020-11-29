@@ -1,1 +1,1 @@
-module.exports = /[，。「」『』《》、；：！？]/gi
+module.exports = /[，。「」『』《》、；：！？]/gi;
