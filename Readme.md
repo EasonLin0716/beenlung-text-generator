@@ -6,4 +6,4 @@ v0.1.1
 
 將...網站...遷移...至福...來點...艾...歐...並...更新...網站...標...誌...
 
-[點...我...瀏覽...網站...](https://tsaibigbrothergenerator.fly.dev/)
+[點...我...瀏覽...網站...](https://beenlungtextgenerator.fly.dev/)
