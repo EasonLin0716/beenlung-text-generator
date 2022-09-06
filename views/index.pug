@@ -1,16 +1,17 @@
 html
   head
     link(href='/css/style.css', rel='stylesheet')
+    link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
     title= title
   body
     div(class='wrapper')
       h1(class='m-0 color-betelnut text-2xl sm:text-4xl md:text-6xl text-stroke-red text-center')= message
       p(class='text-base sm:text-lg')= description
       h2(class='text-center text-sm sm:text-lg')= '輸入...完整...文字...'
-      form(action='/' method="post")
+      form(action='/' method='post')
         div
-          textarea(name='textInput' class="center w-full md:w-5/6 sm:w-4/6 h-60")= originText
-          button(type='submit' class="center text-xs sm:text-base")= '轉換...文字...'
+          textarea(name='textInput' class='center w-full md:w-5/6 sm:w-4/6 h-60')= originText
+          button(type='submit' class='center text-xs sm:text-base')= '轉換...文字...'
       if generatedText
         p(class='bg-betelnut')= generatedText
 
