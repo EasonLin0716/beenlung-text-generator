@@ -2,8 +2,8 @@
 
 ![cover](https://github.com/EasonLin0716/beenlung-text-generator/blob/master/public/images/cover1.JPG?raw=true "cover")
 
-v0.1.1
+v0.2.1
 
-將...網站...遷移...至福...來點...艾...歐...並...更新...網站...標...誌...
+移除...斷...詞庫...改用...Intl...斷詞...提昇...速度...及...準確度
 
 [點...我...瀏覽...網站...](https://beenlungtextgenerator.fly.dev/)

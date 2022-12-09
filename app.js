@@ -3,13 +3,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 const info = require("./public/json/info.json");
-const nodejieba = require("nodejieba");
-nodejieba["DEFAULT_DICT"] = "./dict/jieba.dict.utf8";
-nodejieba["DEFAULT_HMM_DICT"] = "./dict/hmm_model.utf8";
-nodejieba["DEFAULT_USER_DICT"] = "./dict/user.dict.utf8";
-nodejieba["DEFAULT_IDF_DICT"] = "./dict/idf.utf8";
-nodejieba["DEFAULT_STOP_WORD_DICT"] = "./dict/stop_words.utf8";
 const punctuationMarksRegex = require("./public/js/punctuationMarks");
+const generateBeenlungText = (text) => {
+  const filteredTextInput = text.replace(punctuationMarksRegex, "");
+  const segmenterTW = new Intl.Segmenter('zh-TW', { granularity: 'word' });
+  const segments = segmenterTW.segment(filteredTextInput);
+  const cutList = Array.from(segments).map(item => item.segment);
+  return cutList.join("...") + "...";
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,9 +25,7 @@ app.get("/", function (req, res) {
 });
 app.post("/", function (req, res) {
   const { textInput } = req.body;
-  const filteredTextInput = textInput.replace(punctuationMarksRegex, "");
-  const cutList = nodejieba.cut(filteredTextInput.trim());
-  const generatedText = cutList.join("...") + "...";
+  const generatedText = generateBeenlungText(textInput);
   res.render("index", { ...info, generatedText, originText: textInput });
 });
 
